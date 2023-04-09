@@ -1,8 +1,6 @@
 var quantidadeCartas
 
-(function shuffle() {
-    embaralharCartas()
-})()
+
 
 function embaralharCartas() {
     // pegar a quantidade de cartas escolhida pelo usuário
@@ -19,12 +17,9 @@ function embaralharCartas() {
     // criar uma lista com a quantidade de cartas que o usuario escolheu e remover oa classe d-none
     const cartas = document.querySelectorAll(".d-none")
     let cartasSelecionadas = []
-
-
     for (let i = 0; i < Number(result); i++) {
         cartasSelecionadas.push(cartas[i])
     }
-    console.log(cartasSelecionadas)
 
     // embaralhar todas elas
     cartasSelecionadas.forEach((carta => {
@@ -34,6 +29,9 @@ function embaralharCartas() {
     }))
 }
 
+(function shuffle() {
+    embaralharCartas()
+})()
 
 var cliques = 0
 
@@ -46,11 +44,11 @@ function virarCarta(carta) {
         carta1 = carta;
         carta1.removeAttribute("onclick")
     }
-    else if (carta2 == undefined){
+    else if (carta2 == undefined) {
         carta2 = carta;
         carta2.removeAttribute("onclick")
     }
-    console.log(cartasViradas)
+
     if (cartasViradas.length < 2) {
         cliques++
         carta.classList.add("flip")
@@ -60,8 +58,8 @@ function virarCarta(carta) {
                 setTimeout(() => {
                     carta1.classList.remove("flip")
                     carta2.classList.remove("flip")
-                    carta2.setAttribute("onclick","virarCarta(this)")
-                    carta1.setAttribute("onclick","virarCarta(this)")
+                    carta2.setAttribute("onclick", "virarCarta(this)")
+                    carta1.setAttribute("onclick", "virarCarta(this)")
                     carta1 = undefined
                     carta2 = undefined
                 }, 1000)
@@ -80,12 +78,12 @@ function virarCarta(carta) {
 }
 
 
-function mensagemVitoria(){
+function mensagemVitoria() {
     // pegar as cartas pareadas
     const cartasPareadas = document.querySelectorAll(".pareada")
     // pegar a quantidade de cartas que jogador selecionou 
-    if (cartasPareadas.length == Number(quantidadeCartas)){
-        setTimeout(() => {window(alert(`Você ganhou em ${cliques} jogadas!`))} , 500) 
+    if (cartasPareadas.length == Number(quantidadeCartas)) {
+        setTimeout(() => { window(alert(`Você ganhou em ${cliques} jogadas!`)) }, 500)
     }
     // se a quantidade de cartas pareadas for igual a quantidade de cartas que o jogador selecionou, exibe um alert
 }
