@@ -1,6 +1,7 @@
 var quantidadeCartas
 
 
+embaralharCartas()
 
 function embaralharCartas() {
     // pegar a quantidade de cartas escolhida pelo usuário
@@ -13,25 +14,44 @@ function embaralharCartas() {
         }
     }
     quantidadeCartas = result
-
-    // criar uma lista com a quantidade de cartas que o usuario escolheu e remover oa classe d-none
-    const cartas = document.querySelectorAll(".d-none")
-    let cartasSelecionadas = []
-    for (let i = 0; i < Number(result); i++) {
-        cartasSelecionadas.push(cartas[i])
-    }
-
-    // embaralhar todas elas
-    cartasSelecionadas.forEach((carta => {
-        let ramdomPos = Math.floor(Math.random() * 14)
-        carta.style.order = ramdomPos
-        carta.classList.remove("d-none")
-    }))
+    criarCartas()
+}
+function comparador() { 
+	return Math.random() - 0.5; 
 }
 
-(function shuffle() {
-    embaralharCartas()
-})()
+function criarCartas() {
+    const gifPassaro = ['bobrossparrot','explodyparrot','fiestaparrot','metalparrot','revertitparrot','tripletsparrot','unicornparrot']
+    const selecionaCartasCriadas = []
+
+    for (let i = 0; i < quantidadeCartas / 2; i++){
+        selecionaCartasCriadas.push(gifPassaro[i])
+        selecionaCartasCriadas.push(gifPassaro[i])
+    }
+    selecionaCartasCriadas.sort(comparador)
+
+    const container = document.querySelector(".container")
+    let contador = 0
+    let conteudo = ""
+    let indiceId = 1
+    while (contador < quantidadeCartas){
+
+        if (contador % 2 === 0){
+            indiceId++
+        }
+        let cartaCriada = selecionaCartasCriadas[0]
+        selecionaCartasCriadas.shift()
+        conteudo += `<div data-test="card" id="par-${indiceId}" onclick="virarCarta(this)" class="card d-none">`
+        conteudo += `<div class="carta1 front-face face">`
+        conteudo += `<img data-test="face-down-image" class="img-parrot" src="./Imagens/Arquivos U╠üteis - Projeto 04 - Parrot Card Game/back.png"alt=""></div>`
+        conteudo += `<div class="carta2 back-face face">`
+        conteudo += `<img data-test="face-up-image" class="gif-card" src="./Imagens/Arquivos U╠üteis - Projeto 04 - Parrot Card Game/${cartaCriada}.gif" alt="">`
+        conteudo += `</div></div>`
+
+        contador++
+    }
+    container.innerHTML = conteudo
+}
 
 var cliques = 0
 
