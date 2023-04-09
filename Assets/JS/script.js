@@ -16,3 +16,5 @@ function virarCarta(carta) {
     carta2.classList.toggle("back");
 }
 
+//  nem mensage
+
