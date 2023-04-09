@@ -42,27 +42,14 @@ body {
     }
 }
 
-.card {
-    width: 117px;
-    height: 146px;
-    background: #A7E9AF;
-    border: 1px solid #99CEA8;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
 
 .container {
-    background-color: blue;
-    width: 900px;
-    height: 600px;
+    width: 1600px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
 }
 
 .gif-card {
@@ -70,24 +57,12 @@ body {
     height: 84px;
 }
 
-.card-back {
-    width: 117px;
-    height: 146px;
-    background: #A7E9AF;
-    border: 1px solid #99CEA8;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
 .img-parrot {
     width: 84px;
     height: 84px;
 }
 
-.card-1 {
+.card {
     width: 200px;
     height: 250px;
     position: relative;
