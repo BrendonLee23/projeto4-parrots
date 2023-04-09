@@ -83,16 +83,25 @@ body {
     transform-style: preserve-3d;
 }
 
+
 .back-face {
     transform: rotateY(180deg);
 }
 
-.front {
+.flip .back-face {
+    transform: rotateY(0deg);
+}
+
+.flip .front-face {
     transform: rotateY(-180deg);
 }
 
-.back {
+.pareada .back-face {
     transform: rotateY(0deg);
+}
+
+.pareada .front-face {
+    transform: rotateY(-180deg);
 }
 
 .d-none {
